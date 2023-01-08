@@ -23,11 +23,11 @@ jobs:
 
       - run: npm run build
         env:
-          TURBO_TOKEN: uv20kRFjvo6WMbLyWlZffPic
+          TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           TURBO_TEAM: matheusbueno111
 
       - name: Deploy storybook
         working-directory: ./packages/docs
         run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
         env:
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.VERCEL_TOKEN }}
